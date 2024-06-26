@@ -1,4 +1,5 @@
 fastapi
 uvicorn
-request 
+requests
 openai
+python-decouple
