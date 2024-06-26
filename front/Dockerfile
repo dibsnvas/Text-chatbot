@@ -1,4 +1,4 @@
-# Use an official node runtime as a parent image
+# Use an official Node.js runtime as a parent image
 FROM node:18
 
 # Set the working directory
@@ -19,5 +19,5 @@ RUN npm run build
 # Expose the port the app runs on
 EXPOSE 4173
 
-# Run the application
+# Start the application
 CMD ["npm", "run", "start"]

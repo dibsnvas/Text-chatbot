@@ -1,23 +1,12 @@
-# Use an official Node.js runtime as a parent image
-FROM node:18
+FROM python:3.9-slim
 
-# Set the working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json
-COPY package*.json ./
+COPY requirements.txt .
 
-# Install dependencies
-RUN npm ci
+RUN python -m venv venv
+RUN . venv/bin/activate && pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the application
 COPY . .
 
-# Build the application
-RUN npm run build
-
-# Expose the port the app runs on
-EXPOSE 4173
-
-# Run the application
-CMD ["npm", "run", "start"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
