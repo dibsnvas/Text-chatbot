@@ -26,7 +26,7 @@ const Controller = () => {
         formData.append("file", blob, "myFile.wav");
   
         try {
-          const res = await axios.post("http://localhost:8000/post-audio/", formData, {
+          const res = await axios.post("https://chatbot-production-7efb.up.railway.app/post-audio/", formData, {
             responseType: "arraybuffer",
           });
   

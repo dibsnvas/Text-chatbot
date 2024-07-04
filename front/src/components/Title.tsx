@@ -14,7 +14,7 @@ function Title({ setMessages }: Props) {
     setIsResetting(true);
 
     await axios
-      .get("http://localhost:8000/reset", {
+      .get("https://chatbot-production-7efb.up.railway.app/reset", {
         headers: {
           "Content-Type": "application/json",
         },
