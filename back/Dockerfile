@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Use the official Python image from the Docker Hub
-FROM python:3.9-slim as python-build
+FROM python:3.9-slim
 
 # Create and set the working directory
 WORKDIR /usr/src/app
@@ -23,8 +23,8 @@ WORKDIR /usr/src/app
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of your application code
-COPY --from=node-build /usr/src/app .
+# Copy Node.js dependencies and the rest of your application code
+COPY --from=node-build /usr/src/app /usr/src/app
 
 # Expose the port your app runs on
 EXPOSE 8000
