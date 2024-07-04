@@ -2,9 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import { SlReload } from "react-icons/sl";
 
-
 type Props = {
-  setMessages: any;
+  setMessages: React.Dispatch<React.SetStateAction<any[]>>;
 };
 
 function Title({ setMessages }: Props) {
@@ -13,18 +12,20 @@ function Title({ setMessages }: Props) {
   const resetConversation = async () => {
     setIsResetting(true);
 
-    await axios
-      .get("https://chatbot-production-7efb.up.railway.app/reset", {
+    try {
+      const res = await axios.get("https://chatbot-production-7efb.up.railway.app/reset", {
         headers: {
           "Content-Type": "application/json",
         },
-      })
-      .then((res) => {
-        if (res.status == 200) {
-          setMessages([]);
-        }
-      })
-      .catch((err) => {});
+      });
+
+      if (res.status === 200) {
+        setMessages([]);
+      }
+    } catch (err) {
+      console.error("Error resetting conversation:", err);
+      // Optionally notify the user about the error
+    }
 
     setIsResetting(false);
   };
@@ -43,7 +44,6 @@ function Title({ setMessages }: Props) {
       </button>
     </div>
   );
-  
 }
 
 export default Title;
