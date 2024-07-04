@@ -1,33 +1,18 @@
-# Use the official Node.js image from the Docker Hub
-FROM node:14 as node-build
+FROM python:3.8-slim
 
-# Create and set the working directory
-WORKDIR /usr/src/app
+# Install node and npm
+RUN apt-get update && apt-get install -y nodejs npm
 
-# Copy the package.json and package-lock.json files
-COPY package*.json ./
+# Set work directory
+WORKDIR /app
 
-# Install the dependencies
-RUN npm install
+# Install python dependencies
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
-# Copy the rest of your application code
+# Copy project files
 COPY . .
 
-# Use the official Python image from the Docker Hub
-FROM python:3.9-slim
-
-# Create and set the working directory
-WORKDIR /usr/src/app
-
-# Copy the requirements.txt file and install the dependencies
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy Node.js dependencies and the rest of your application code
-COPY --from=node-build /usr/src/app /usr/src/app
-
-# Expose the port your app runs on
+# Expose port and run the application
 EXPOSE 8000
-
-# Define the command to run your app
-CMD ["npm", "run", "dev"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
