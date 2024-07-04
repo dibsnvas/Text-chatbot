@@ -1,14 +1,14 @@
 FROM python:3.8-slim
 
-# Install node and npm
+# Install dependencies
 RUN apt-get update && apt-get install -y nodejs npm
 
 # Set work directory
 WORKDIR /app
 
-# Install python dependencies
+# Copy and install python dependencies
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy project files
 COPY . .
