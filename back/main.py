@@ -26,8 +26,7 @@ origins = [
     "http://localhost:5174",
     "http://localhost:4173",
     "http://localhost:3000",
-    "https://voice-chat-bot-production.up.railway.app/"
-]
+    ]
 
 
 app.add_middleware(

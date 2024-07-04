@@ -13,9 +13,7 @@ def convert_text_to_speech(message):
     }
   }
 
-  voice_shaun = "mTSvIrm2hmcnOvb21nW2"
-  voice_alma = "8M81RK3MD7u4DOJpu2G5"
-  voice_antoni = "ErXwobaYiN019PkySvjV"
+  voice_alma = "GCPLhb1XrVwcoKUJYcvz"
 
   headers = { "xi-api-key": ELEVEN_LABS_API_KEY, "Content-Type": "application/json", "accept": "audio/mpeg" }
   endpoint = f"https://api.elevenlabs.io/v1/text-to-speech/{voice_alma}"
