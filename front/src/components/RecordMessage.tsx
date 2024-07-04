@@ -6,6 +6,19 @@ type Props = {
 };
 
 const RecordMessage = ({ handleStop }: Props) => {
+  const translateStatus = (status: string) => {
+    switch (status) {
+      case "idle":
+        return "В ожидании";
+      case "recording":
+        return "Запись";
+      case "stopped":
+        return "Остановлено";
+      default:
+        return status;
+    }
+  };
+
   return (
     <ReactMediaRecorder
       audio
@@ -19,7 +32,7 @@ const RecordMessage = ({ handleStop }: Props) => {
           >
             <FaMicrophone />
           </button>
-          <p className="mt-2 text-white font-light">{status}</p>
+          <p className="mt-2 text-white font-light">{translateStatus(status)}</p>
         </div>
       )}
     />

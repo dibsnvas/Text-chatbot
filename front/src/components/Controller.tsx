@@ -50,7 +50,7 @@ const Controller = () => {
 
 
   return (
-    <div className="h-screen overflow-y-hidden">
+    <div className="h-screen overflow-y-hidden bg-white">
       <Title setMessages={setMessages} />
 
       <div className="flex flex-col justify-between h-full overflow-y-scroll pb-96">
@@ -64,7 +64,6 @@ const Controller = () => {
                   (audio.sender == "alma" && "flex items-end")
                 }
               >
-                {/* Sender */}
                 <div className="mt-4 ">
                   <p
                     className={
@@ -87,8 +86,8 @@ const Controller = () => {
           })}
 
           {messages.length == 0 && !isLoading && (
-            <div className="text-center font-light italic mt-10">
-              Запиши Алме сообщение...
+            <div className="text-center font-light mt-10">
+              Запиши сообщение...
             </div>
           )}
 
@@ -99,7 +98,7 @@ const Controller = () => {
           )}
         </div>
 
-        <div className="fixed bottom-0 w-full py-6 border-t text-center bg-gradient-to-r from-sky-500 to-pink-500">
+        <div className="fixed bottom-0 w-full py-6 border-t text-center bg-gradient-to-r bg-customBlue">
           <div className="flex justify-center items-center w-full">
             <div>
               <RecordMessage handleStop={handleStop} />
