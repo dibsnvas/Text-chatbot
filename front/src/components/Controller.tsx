@@ -48,15 +48,16 @@ const Controller = () => {
               }
             >
               <div className="mt-4">
-                <p
-                  className={
-                    message.sender === "Shyraq"
-                      ? "text-right mr-2 italic text-black"
-                      : "ml-2 russian text-blue-500"
-                  }
-                >
-                  {message.sender}
-                </p>
+              <p
+  className={
+    message.sender === "Shyraq"
+      ? "text-right mr-2 italic text-black"
+      : "ml-2 russian text-blue-500"
+  }
+>
+  {message.sender}
+</p>
+
                 <p className="text-black">{message.text}</p>
               </div>
             </div>
