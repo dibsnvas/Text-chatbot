@@ -17,7 +17,7 @@ const Controller = () => {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/post-text/",
+        "https://your-server.vercel.app/post-text/",
         new URLSearchParams({ text: textInput.trim() }),
         { headers: { "Content-Type": "application/x-www-form-urlencoded" } }
       );
@@ -44,20 +44,19 @@ const Controller = () => {
               key={index + message.sender}
               className={
                 "flex flex-col " +
-                (message.sender === "alma" && "flex items-end")
+                (message.sender === "alma" ? "flex items-end" : "")
               }
             >
               <div className="mt-4">
-              <p
-  className={
-    message.sender === "Shyraq"
-      ? "text-right mr-2 italic text-black"
-      : "ml-2 russian text-blue-500"
-  }
->
-  {message.sender}
-</p>
-
+                <p
+                  className={
+                    message.sender === "me"
+                      ? "text-right mr-2 italic text-black"
+                      : "ml-2 text-blue-500"
+                  }
+                >
+                  {message.sender}
+                </p>
                 <p className="text-black">{message.text}</p>
               </div>
             </div>
