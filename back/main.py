@@ -51,6 +51,3 @@ async def post_text(text: str = Form(...)):
     except Exception as e:
         print(f"Error in post_text: {e}")
         raise HTTPException(status_code=500, detail="Internal Server Error")
-
-# Debugging purposes: print statements to trace the flow
-print("FastAPI backend is running...")
