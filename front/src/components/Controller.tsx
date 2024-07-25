@@ -17,18 +17,17 @@ const Controller = () => {
 
     try {
       const response = await axios.post(
-        "https://your-server.vercel.app/post-text/",
+        "http://127.0.0.1:8000/post-text/",
         new URLSearchParams({ text: textInput.trim() }),
         { headers: { "Content-Type": "application/x-www-form-urlencoded" } }
       );
 
       const almaMessage = { sender: "alma", text: response.data.response };
-      messagesArr.push(almaMessage);
-      setMessages(messagesArr);
+      setMessages([...messagesArr, almaMessage]);
       setTextInput("");
-      setIsLoading(false);
     } catch (err) {
       console.error("Error handling text submit:", err);
+    } finally {
       setIsLoading(false);
     }
   };
