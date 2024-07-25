@@ -21,5 +21,5 @@ ENV OPEN_AI_ORG=your_openai_org
 ENV OPEN_AI_KEY=your_openai_key
 ENV ELEVEN_LABS_API_KEY=your_eleven_labs_api_key
 
-# Command to run the FastAPI application using Uvicorn
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Activate virtual environment and run the FastAPI application using Uvicorn
+CMD ["sh", "-c", "source venv/bin/activate && uvicorn main:app --host 0.0.0.0 --port 8000 --reload"]
